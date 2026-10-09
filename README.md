@@ -2,101 +2,152 @@
 
 > **Find Your Place.**
 
-HAVENLY is a modern real-estate discovery platform concept designed to make finding, exploring, and managing property listings simple, clear, and user-friendly.
+**HAVENLY** is a real-estate discovery and property-management platform designed to connect people searching for properties with owners or agents who want to publish and manage property listings.
 
-The project connects two sides of the real-estate journey:
-
-- People looking for a home or property to buy or rent.
-- Property owners or agents who want to publish and manage listings.
-
-Rather than overwhelming users with scattered information, HAVENLY brings property discovery, comparison, saved listings, and listing management into one focused experience.
+This repository is prepared as the official project workspace and documentation source for the team final project.
 
 ---
 
-## Project Vision
+## Project Summary
 
-Finding the right property can be time-consuming. Users often have to browse many listings, repeatedly check the same criteria, and keep track of interesting options manually.
+Property search can become time-consuming when users need to browse many listings, repeatedly apply the same criteria, compare options manually, and keep track of properties they are interested in.
 
-HAVENLY aims to create a cleaner journey:
+HAVENLY aims to provide one organized experience where users can:
 
-**Discover -> Filter -> Explore -> Save -> Compare -> Contact**
+- Discover available properties.
+- Search and filter listings based on their needs.
+- Review complete property information and images.
+- Save interesting properties.
+- Compare shortlisted options.
+- Contact the property owner or agent.
 
-For owners and agents:
-
-**Publish -> Manage -> Update -> Reach interested users**
+At the same time, property owners and agents can publish, update, and manage their listings from one place.
 
 ---
 
-## Core User Experience
+## Problem Statement
+
+Property seekers need a clear and efficient way to narrow large sets of listings according to practical criteria such as location, price, property type, sale or rent purpose, number of rooms, and area.
+
+Property owners and agents also need a simple and organized way to present their properties and keep listing information updated.
+
+HAVENLY addresses both sides through a focused property marketplace experience.
+
+---
+
+## Proposed Solution
+
+HAVENLY provides two main user journeys:
 
 ### Property Seeker
 
-A visitor can:
+**Discover → Search → Filter → Explore → Save → Compare → Contact**
 
-- Browse available properties.
-- Search by location and property needs.
-- Filter results by criteria such as price, property type, purpose, bedrooms, bathrooms, and area.
-- Open a detailed property page with images and information.
-- Save interesting properties to favorites.
-- Compare selected properties.
-- Contact the property owner or agent.
-- Review recently viewed properties.
+A user can browse available properties, refine results using relevant criteria, open property details, save or compare selected listings, and contact the owner or agent when interested.
 
 ### Property Owner / Agent
 
-An owner or agent can:
+**Publish → Manage → Update → Remove**
 
-- Add a new property listing.
-- Provide property information and images.
-- View their published listings.
-- Edit listing information.
-- Remove a listing when it is no longer available.
-- Manage listings from one dashboard.
+An owner or agent can add a property, provide its information and images, review published listings, update details, and remove listings that are no longer available.
+
+---
+
+## Core Project Scope
+
+The initial complete version of HAVENLY focuses on:
+
+- Property browsing and discovery.
+- Search and filtering.
+- Property details.
+- Favorites / saved listings.
+- Property comparison.
+- Add property listing.
+- Edit property listing.
+- Delete property listing.
+- Owner / user dashboard.
+- Responsive user experience.
+- Loading, empty, success, and error states.
+
+The project is intentionally scoped to prioritize a complete and polished experience over unnecessary complexity.
+
+---
+
+## Data Approach
+
+HAVENLY is designed as an independent property marketplace.
+
+The project does **not** depend on scraping or searching external real-estate websites. The initial version can work with a controlled project dataset containing realistic property listings across multiple locations, price ranges, property types, and sale/rent scenarios.
+
+Listings added through the owner or agent flow can also become part of the HAVENLY experience.
+
+External real-estate integrations may be considered later as future scope where approved and technically appropriate.
 
 ---
 
 ## Main Product Areas
 
-- **Home & Discovery** - introduces the platform and gives users a fast starting point for property search.
-- **Property Listings** - displays available properties with useful filtering and sorting.
-- **Property Details** - presents complete information about a selected property.
-- **Favorites** - keeps saved properties in one place.
-- **Property Comparison** - helps users evaluate a small set of properties side by side.
-- **Add / Manage Listings** - enables owners or agents to create and manage property advertisements.
-- **User Dashboard** - provides a central place for personal activity and property management.
+- **Home & Discovery** — introduces the platform and provides a clear entry point into property search.
+- **Property Listings** — presents available properties with filtering and sorting capabilities.
+- **Property Details** — displays complete information about a selected property.
+- **Favorites** — keeps saved properties organized.
+- **Property Comparison** — supports side-by-side evaluation of selected listings.
+- **Add / Manage Listings** — enables owners or agents to create and maintain property advertisements.
+- **Dashboard** — provides a central place for property management and relevant user activity.
 
 ---
 
-## Initial Project Scope
+## Project Objectives
 
-The first version of HAVENLY focuses on creating a polished property marketplace experience rather than attempting to become a large real-estate aggregator.
+The project aims to demonstrate:
 
-The platform will work with its own project dataset/listings. It is **not dependent on scraping or searching external real-estate websites**.
-
-Possible future extensions may include third-party real-estate integrations, map-based discovery, smarter property recommendations, verified listings, and richer communication tools.
-
----
-
-## Project Status
-
-**Planning / Product Definition**
-
-The concept and feature scope are being defined before the implementation stack and technical architecture are finalized.
-
-A detailed project brief is available in [`docs/PROJECT_BRIEF.md`](docs/PROJECT_BRIEF.md).
+- A clear real-world problem and solution.
+- Complete and understandable user journeys.
+- Meaningful interaction instead of static pages only.
+- Search, filtering, comparison, and listing-management logic.
+- Consistent and responsive interface design.
+- Well-defined scope suitable for team implementation.
+- Organized project documentation and collaboration.
 
 ---
 
-## Final Project Goal
+## Current Status
 
-HAVENLY is being developed as a team final project with a focus on:
+**Planning and Product Definition**
 
-- A strong and professional user experience.
-- Clear real-world use cases.
-- Well-defined user flows.
-- Meaningful interactive features.
-- A project scope that is realistic enough to finish at a high quality.
+The project concept, user flows, feature scope, and data approach are currently defined. The implementation stack and detailed technical architecture will be finalized separately after the team confirms responsibilities and development decisions.
 
 ---
 
-**HAVENLY** - *Find Your Place.*
+## Documentation
+
+- [Project Brief](docs/PROJECT_BRIEF.md)
+- [Reviewer Overview](docs/REVIEWER_OVERVIEW.md)
+
+---
+
+## Future Scope
+
+Possible future extensions include:
+
+- Map-based property discovery.
+- Verified listing indicators.
+- Smarter property recommendations.
+- Approved third-party property integrations.
+- Real-time communication features.
+- Additional property-management services.
+
+These items are not required for the initial final-project scope.
+
+---
+
+## Project Identity
+
+**Project:** HAVENLY  
+**Category:** Real Estate Discovery & Property Management  
+**Type:** Team Final Project  
+**Tagline:** *Find Your Place.*
+
+---
+
+**HAVENLY** — *Find Your Place.*
