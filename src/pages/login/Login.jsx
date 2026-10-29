@@ -1,0 +1,1 @@
+export default function Login() { return <section className="page"><h1>Sign In</h1><p>Access your HAVENLY account.</p><p><small>Page scaffold — functionality to be implemented.</small></p></section>; }

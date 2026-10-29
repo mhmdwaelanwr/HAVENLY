@@ -1,0 +1,1 @@
+export default function AddProperty() { return <section className="page"><h1>Add a Property</h1><p>Publish a listing as an owner or agent.</p><p><small>Page scaffold — functionality to be implemented.</small></p></section>; }

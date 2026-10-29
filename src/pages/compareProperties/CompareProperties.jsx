@@ -1,0 +1,1 @@
+export default function CompareProperties() { return <section className="page"><h1>Compare Properties</h1><p>Compare shortlisted homes side by side.</p><p><small>Page scaffold — functionality to be implemented.</small></p></section>; }

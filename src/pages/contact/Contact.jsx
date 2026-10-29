@@ -1,0 +1,1 @@
+export default function Contact() { return <section className="page"><h1>Contact Us</h1><p>Get in touch with the HAVENLY team.</p><p><small>Page scaffold — functionality to be implemented.</small></p></section>; }
