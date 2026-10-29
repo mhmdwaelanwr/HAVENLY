@@ -1,0 +1,1 @@
+export default function About() { return <section className="page"><h1>About HAVENLY</h1><p>A simpler way to find your place.</p><p><small>Page scaffold — functionality to be implemented.</small></p></section>; }

@@ -1,0 +1,1 @@
+export default function MyListings() { return <section className="page"><h1>My Listings</h1><p>Manage the properties you have published.</p><p><small>Page scaffold — functionality to be implemented.</small></p></section>; }

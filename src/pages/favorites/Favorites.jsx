@@ -1,0 +1,1 @@
+export default function Favorites() { return <section className="page"><h1>Saved Properties</h1><p>Keep your favorite listings together.</p><p><small>Page scaffold — functionality to be implemented.</small></p></section>; }

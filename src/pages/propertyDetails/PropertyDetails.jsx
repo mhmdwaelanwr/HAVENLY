@@ -1,0 +1,1 @@
+export default function PropertyDetails() { return <section className="page"><h1>Property Details</h1><p>Explore photos, price, location and property information.</p><p><small>Page scaffold — functionality to be implemented.</small></p></section>; }

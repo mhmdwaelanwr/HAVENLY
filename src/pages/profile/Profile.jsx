@@ -1,0 +1,1 @@
+export default function Profile() { return <section className="page"><h1>My Profile</h1><p>Manage your account details.</p><p><small>Page scaffold — functionality to be implemented.</small></p></section>; }
