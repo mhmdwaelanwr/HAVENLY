@@ -1,1 +1,9 @@
-export default function Register() { return <section className="page"><h1>Create Account</h1><p>Join HAVENLY as a seeker, owner or agent.</p><p><small>Page scaffold — functionality to be implemented.</small></p></section>; }
+const Register = () => {
+  return (
+    <div>
+      <h1>Register</h1>
+    </div>
+  );
+};
+
+export default Register;

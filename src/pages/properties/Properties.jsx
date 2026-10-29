@@ -1,1 +1,9 @@
-export default function Properties() { return <section className="page"><h1>Explore Properties</h1><p>Search and filter property listings.</p><p><small>Page scaffold — functionality to be implemented.</small></p></section>; }
+const Properties = () => {
+  return (
+    <div>
+      <h1>Properties</h1>
+    </div>
+  );
+};
+
+export default Properties;

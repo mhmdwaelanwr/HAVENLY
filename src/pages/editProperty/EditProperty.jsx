@@ -1,1 +1,9 @@
-export default function EditProperty() { return <section className="page"><h1>Edit Property</h1><p>Update an existing property listing.</p><p><small>Page scaffold — functionality to be implemented.</small></p></section>; }
+const EditProperty = () => {
+  return (
+    <div>
+      <h1>Edit Property</h1>
+    </div>
+  );
+};
+
+export default EditProperty;

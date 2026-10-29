@@ -1,1 +1,9 @@
-export default function Home() { return <section className="page"><h1>Find your place</h1><p>Discover properties for sale or rent.</p><p><small>Page scaffold — functionality to be implemented.</small></p></section>; }
+const Home = () => {
+  return (
+    <div>
+      <h1>Home</h1>
+    </div>
+  );
+};
+
+export default Home;

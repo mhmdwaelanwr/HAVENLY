@@ -1,1 +1,9 @@
-export default function Dashboard() { return <section className="page"><h1>Dashboard</h1><p>Your property and account overview.</p><p><small>Page scaffold — functionality to be implemented.</small></p></section>; }
+const Dashboard = () => {
+  return (
+    <div>
+      <h1>Dashboard</h1>
+    </div>
+  );
+};
+
+export default Dashboard;
