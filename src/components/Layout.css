@@ -30,6 +30,10 @@
   height: 36px;
 }
 
+:root[data-theme="dark"] .havenly-brand img {
+  filter: brightness(0) invert(1);
+}
+
 .havenly-brand span,
 .footer-brand {
   font-family: "Playfair Display", Georgia, serif;
