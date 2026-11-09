@@ -190,9 +190,9 @@ return (
               </p>
 
               <div className="mt-5 flex flex-wrap items-center gap-4 border-t border-gray-100 pt-4 text-sm text-gray-500">
-                <span>🛏 {property.bedrooms} Beds</span>
-                <span>🚿 {property.bathrooms} Baths</span>
-                <span>📐 {property.area} m²</span>
+                <span> {property.bedrooms} Beds</span>
+                <span> {property.bathrooms} Baths</span>
+                <span> {property.area} m²</span>
               </div>
 
               <button
