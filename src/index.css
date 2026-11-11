@@ -1,3 +1,15 @@
 @import "tailwindcss";
 @import "@heroui/styles";
 @plugin "daisyui";
+
+@theme {
+  --color-charcoal: #1F1F1F;
+  --color-warm-gold: #8C7255;
+  --color-sand: #D9C6A8;
+  --color-ivory: #F7F4EF;
+  --color-dark-surface: #252A2A;
+  --color-dark-gold: #6D5339;
+  
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "DM Sans", Inter, sans-serif;
+}
