@@ -113,11 +113,8 @@ return (
 {/* Main Layout */}
 <div className="grid grid-cols-1 gap-8 lg:grid-cols-[280px_1fr]">
 
-  <PropertyFilters
-    filters={filters}
-    setFilters={setFilters}
-    onApply={() => console.log(filters)}
-  />
+  <PropertyFilters filters={filters} setFilters={setFilters} 
+  onApply={() => console.log(filters)}/>
 
   {/* Properties Content */}
   <section>
