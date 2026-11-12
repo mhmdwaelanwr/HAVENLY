@@ -7,7 +7,7 @@
   --property-border: light-dark(#e2d9cd, #4c4943);
   --property-accent: light-dark(#6d5339, #d9c6a8);
   --property-highlight: light-dark(#eee4d6, #3d3831);
-  --property-heart-active: light-dark(#9f241d, #ffb1aa);
+  --property-error: light-dark(#9f241d, #ffb1aa);
   background: var(--property-background);
   color: var(--property-text);
 }
@@ -18,6 +18,24 @@
 
 :where([data-theme="light"]) .property-theme {
   color-scheme: light;
+}
+
+.property-nav {
+  background: var(--property-surface);
+  border-bottom: 1px solid var(--property-border);
+}
+
+.property-nav a {
+  border-radius: 0.5rem;
+  padding: 0.625rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.property-nav a:hover,
+.property-nav a[aria-current="page"] {
+  background: var(--property-highlight);
+  color: var(--property-accent);
 }
 
 .property-page {
@@ -46,6 +64,12 @@
   color: var(--property-muted, #555b65);
 }
 
+.property-link {
+  color: var(--property-accent, #6d5339);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
 .property-button {
   display: inline-flex;
   min-height: 2.75rem;
@@ -60,7 +84,8 @@
   text-align: center;
 }
 
-.property-button:hover {
+.property-button:hover,
+.property-button[aria-pressed="true"] {
   background: var(--property-highlight, #f1ebe3);
 }
 
@@ -80,11 +105,35 @@
 }
 
 .property-heart:hover,
-.property-heart[aria-pressed="true"] {
-  color: var(--property-heart-active, #9f241d);
+.property-heart[aria-pressed="true"],
+.property-error {
+  color: var(--property-error, #9f241d);
 }
 
-:is(.property-button, .property-heart):focus-visible {
+.property-feedback {
+  color: var(--property-accent, #6d5339);
+}
+
+.property-input {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.625rem 0.75rem;
+  border: 1px solid var(--property-border);
+  border-radius: 0.5rem;
+  background: var(--property-background);
+  color: var(--property-text);
+}
+
+.property-input[aria-invalid="true"] {
+  border-color: var(--property-error);
+}
+
+.property-success {
+  background: light-dark(#e8f3eb, #1b3929);
+  color: light-dark(#205637, #c5efd0);
+}
+
+:is(.property-nav a, .property-link, .property-button, .property-heart, .property-panel, .property-input):focus-visible {
   outline: 2px solid var(--property-accent, #6d5339);
   outline-offset: 3px;
 }
