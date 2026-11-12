@@ -1,61 +1,9 @@
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import PropertyCard from "../../components/PropertyCard";
+import { properties } from "../../data/properties";
 import PropertyFilters from "./PropertyFilters";
-
-const properties = [
-{
-id: 1,
-title: "Modern Luxury Villa",
-location: "New Cairo, Egypt",
-price: 8500000,
-type: "Villa",
-bedrooms: 4,
-bathrooms: 3,
-area: 320,
-image:
-"https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800",
-featured: true,
-},
-{
-id: 2,
-title: "Elegant Modern Apartment",
-location: "Sheikh Zayed, Egypt",
-price: 3200000,
-type: "Apartment",
-bedrooms: 3,
-bathrooms: 2,
-area: 180,
-image:
-"https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800",
-featured: false,
-},
-{
-id: 3,
-title: "Contemporary Family House",
-location: "Fifth Settlement, Egypt",
-price: 6200000,
-type: "House",
-bedrooms: 5,
-bathrooms: 4,
-area: 280,
-image:
-"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800",
-featured: true,
-},
-{
-id: 4,
-title: "Apartment in a compound",
-location: "Maadi, Egypt",
-price: 8200000,
-type: "House",
-bedrooms: 5,
-bathrooms: 4,
-area: 280,
-image:
-"https://aqardxb.com/wp-content/uploads/2022/11/LIV-LUX-Penthouse-Master-Bedroom.jpg",
-featured: false,
-},
-];
 
 const initialFilters = {
 type: "All Types",
@@ -66,7 +14,7 @@ bedrooms: "",
 bathrooms: "",
 };
 
-const Properties = () => {
+const Properties = ({ favoriteIds, onToggleFavorite }) => {
 const [filters, setFilters] = useState(initialFilters);
 const [sortBy, setSortBy] = useState("default");
 
@@ -108,6 +56,7 @@ return (
   <p className="mt-3 text-gray-500">
     Explore our curated collection of properties tailored to your lifestyle.
   </p>
+  <Link to="/favorites" className="property-button mt-4">Favorites</Link>
 </div>
 
 {/* Main Layout */}
@@ -145,61 +94,12 @@ return (
     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-2">
       {sortedProperties.length > 0 ? (
         sortedProperties.map((property) => (
-          <article
+          <PropertyCard
             key={property.id}
-            className="group overflow-hidden rounded-xl border border-gray-200 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-lg"
-          >
-            {/* Property Image */}
-            <div className="relative h-56 overflow-hidden">
-              <img
-                src={property.image}
-                alt={property.title}
-                className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-              />
-
-              {property.featured && (
-                <span className="absolute left-4 top-4 rounded-md bg-[#25231f] px-3 py-1.5 text-xs text-white">
-                  Featured
-                </span>
-              )}
-
-              <button
-                type="button"
-                aria-label="Add to favorites"
-                className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-white text-lg text-gray-700 shadow hover:text-red-500"
-              >
-                ♡
-              </button>
-            </div>
-
-            {/* Property Details */}
-            <div className="p-5">
-              <p className="text-sm text-gray-400">
-                {property.location}
-              </p>
-
-              <h3 className="mt-2 text-lg font-semibold text-gray-900">
-                {property.title}
-              </h3>
-
-              <p className="mt-3 text-xl font-bold text-[#25231f]">
-                {property.price.toLocaleString("en-US")} EGP
-              </p>
-
-              <div className="mt-5 flex flex-wrap items-center gap-4 border-t border-gray-100 pt-4 text-sm text-gray-500">
-                <span> {property.bedrooms} Beds</span>
-                <span> {property.bathrooms} Baths</span>
-                <span> {property.area} m²</span>
-              </div>
-
-              <button
-                type="button"
-                className="mt-5 w-full rounded-lg border border-[#25231f] py-2.5 text-sm font-medium text-[#25231f] transition hover:bg-[#25231f] hover:text-white"
-              >
-                View Details
-              </button>
-            </div>
-          </article>
+            property={property}
+            isFavorite={favoriteIds.includes(property.id)}
+            onToggleFavorite={onToggleFavorite}
+          />
         ))
       ) : (
         <p className="col-span-full py-10 text-center text-gray-500">

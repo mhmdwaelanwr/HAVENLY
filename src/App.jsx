@@ -1,6 +1,9 @@
+import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { findProperty } from "./data/properties";
+import { readPropertyIds, savePropertyIds } from "./utils/propertyStorage";
 
 import Home from "./pages/home/Home";
 import Properties from "./pages/properties/Properties";
@@ -18,15 +21,44 @@ import Contact from "./pages/contact/Contact";
 import About from "./pages/about/About";
 import NotFound from "./pages/notFound/NotFound";
 
+const FAVORITES_KEY = "havenly.favorites";
+
 const App = () => {
+  const [favoriteIds, setFavoriteIds] = useState(() => readPropertyIds(FAVORITES_KEY));
+
+  useEffect(() => {
+    savePropertyIds(FAVORITES_KEY, favoriteIds);
+  }, [favoriteIds]);
+
+  function toggleFavorite(id) {
+    setFavoriteIds((ids) => {
+      if (ids.includes(id)) {
+        return ids.filter((savedId) => savedId !== id);
+      }
+
+      return [...ids, id];
+    });
+  }
+
   return (
     <div>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/properties" element={<Properties />} />
+        <Route
+          path="/properties"
+          element={<Properties favoriteIds={favoriteIds} onToggleFavorite={toggleFavorite} />}
+        />
         <Route path="/properties/:id" element={<PropertyDetails />} />
-        <Route path="/favorites" element={<Favorites />} />
+        <Route
+          path="/favorites"
+          element={
+            <Favorites
+              properties={favoriteIds.map(findProperty)}
+              onToggleFavorite={toggleFavorite}
+            />
+          }
+        />
         <Route path="/compare" element={<CompareProperties />} />
         <Route path="/add-property" element={<AddProperty />} />
         <Route path="/properties/:id/edit" element={<EditProperty />} />

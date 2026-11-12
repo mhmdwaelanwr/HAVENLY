@@ -1,0 +1,90 @@
+.property-theme {
+  color-scheme: light dark;
+  --property-background: light-dark(#f7f4ef, #1f1f1f);
+  --property-surface: light-dark(#fff, #252a2a);
+  --property-text: light-dark(#1f1f1f, #f7f4ef);
+  --property-muted: light-dark(#605b53, #d5cec3);
+  --property-border: light-dark(#e2d9cd, #4c4943);
+  --property-accent: light-dark(#6d5339, #d9c6a8);
+  --property-highlight: light-dark(#eee4d6, #3d3831);
+  --property-heart-active: light-dark(#9f241d, #ffb1aa);
+  background: var(--property-background);
+  color: var(--property-text);
+}
+
+:where(.dark, [data-theme="dark"]) .property-theme {
+  color-scheme: dark;
+}
+
+:where([data-theme="light"]) .property-theme {
+  color-scheme: light;
+}
+
+.property-page {
+  min-height: calc(100vh - 4rem);
+  padding: clamp(1.5rem, 4vw, 3.5rem) clamp(1rem, 3vw, 2rem);
+}
+
+.property-heading {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.property-panel {
+  background: var(--property-surface, #fff);
+  border: 1px solid var(--property-border, #e5e7eb);
+  border-radius: 0.75rem;
+  color: var(--property-text, #25231f);
+}
+
+.property-divider {
+  border-top: 1px solid var(--property-border, #e5e7eb);
+}
+
+.property-muted {
+  color: var(--property-muted, #555b65);
+}
+
+.property-button {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 0.875rem;
+  border: 1px solid var(--property-accent, #25231f);
+  border-radius: 0.5rem;
+  color: var(--property-accent, #25231f);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.property-button:hover {
+  background: var(--property-highlight, #f1ebe3);
+}
+
+.property-primary {
+  background: var(--property-accent);
+  color: var(--property-surface);
+}
+
+.property-primary:hover {
+  background: var(--property-text);
+  border-color: var(--property-text);
+}
+
+.property-heart {
+  background: var(--property-surface, #fff);
+  color: var(--property-text, #25231f);
+}
+
+.property-heart:hover,
+.property-heart[aria-pressed="true"] {
+  color: var(--property-heart-active, #9f241d);
+}
+
+:is(.property-button, .property-heart):focus-visible {
+  outline: 2px solid var(--property-accent, #6d5339);
+  outline-offset: 3px;
+}
