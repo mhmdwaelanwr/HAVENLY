@@ -7,6 +7,8 @@ const navigationLinks = [
   { label: "Home", to: "/", end: true },
   { label: "Properties", to: "/properties" },
   { label: "Favorites", to: "/favorites" },
+  { label: "Compare", to: "/compare" },
+  { label: "Recently Viewed", to: "/recently-viewed" },
   { label: "About", to: "/about" },
 ];
 

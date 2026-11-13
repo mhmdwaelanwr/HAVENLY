@@ -1,4 +1,3 @@
-
 import PropertyTypeFilter from "./PropertyTypeFilter";
 import LocationFilter from "./LocationFilter";
 import PriceRangeFilter from "./PriceRangeFilter";
@@ -7,16 +6,29 @@ import BathroomsFilter from "./BathroomsFilter";
 
 const PropertyFilters = ({ filters, setFilters, onApply }) => {
   return (
-    <aside className="h-fit rounded-xl border bg-white p-5">
-      <h2 className="mb-1 text-base font-semibold text-[#25231f]">
+    <aside className="property-panel h-fit p-5">
+      <h2 className="mb-1 text-base font-semibold">
         Refine your search
       </h2>
 
-      <p className="mb-6 text-xs text-gray-400">
+      <p className="mb-6 text-xs property-muted">
         Find your perfect property
       </p>
 
       <div className="space-y-5">
+        <label className="block text-xs font-medium property-muted">
+          Looking to
+          <select
+            value={filters.purpose}
+            onChange={(event) => setFilters({ ...filters, purpose: event.target.value })}
+            className="property-input mt-2"
+          >
+            <option value="">Buy or rent</option>
+            <option value="buy">Buy</option>
+            <option value="rent">Rent</option>
+          </select>
+        </label>
+
         <PropertyTypeFilter
           value={filters.type}
           onChange={(value) => setFilters({ ...filters, type: value })}
@@ -46,7 +58,7 @@ const PropertyFilters = ({ filters, setFilters, onApply }) => {
 
         <button
           onClick={onApply}
-          className="w-full rounded-md bg-[#25231f] py-3 text-sm text-white hover:bg-[#444039]"
+          className="property-button property-primary w-full"
         >
           Apply Filters
         </button>

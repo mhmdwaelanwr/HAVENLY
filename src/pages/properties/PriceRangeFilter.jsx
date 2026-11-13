@@ -1,8 +1,7 @@
-
 const PriceRangeFilter = ({ minPrice, maxPrice, onMinChange, onMaxChange }) => {
   return (
     <div>
-      <label className="mb-2 block text-xs font-medium text-gray-600">
+      <label className="mb-2 block text-xs font-medium property-muted">
         Price Range
       </label>
 
@@ -12,7 +11,7 @@ const PriceRangeFilter = ({ minPrice, maxPrice, onMinChange, onMaxChange }) => {
           value={minPrice}
           onChange={(e) => onMinChange(e.target.value)}
           placeholder="Min price"
-          className="min-w-0 rounded-md border border-gray-200 px-2 py-2.5 text-sm outline-none focus:border-gray-500"
+          className="property-input min-w-0"
         />
 
         <input
@@ -20,7 +19,7 @@ const PriceRangeFilter = ({ minPrice, maxPrice, onMinChange, onMaxChange }) => {
           value={maxPrice}
           onChange={(e) => onMaxChange(e.target.value)}
           placeholder="Max price"
-          className="min-w-0 rounded-md border border-gray-200 px-2 py-2.5 text-sm outline-none focus:border-gray-500"
+          className="property-input min-w-0"
         />
       </div>
     </div>

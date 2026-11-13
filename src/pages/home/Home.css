@@ -224,11 +224,12 @@
 
 .featured-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
   gap: 30px;
 }
 
 .featured-card {
+  position: relative;
   border: 1px solid var(--havenly-border);
   border-radius: 14px;
   overflow: hidden;
@@ -236,6 +237,13 @@
   text-decoration: none;
   color: var(--havenly-text);
   transition: transform 0.15s ease;
+}
+
+.featured-card > a {
+  display: block;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
 }
 
 .featured-card:hover {
@@ -276,12 +284,28 @@
 .favorite-symbol {
   top: 14px;
   right: 16px;
-  width: 35px;
-  height: 35px;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
   border-radius: 50%;
   display: grid;
   place-items: center;
   font-size: 22px;
+}
+
+.favorite-symbol:hover,
+.favorite-symbol[aria-pressed="true"] {
+  color: #9f241d;
+}
+
+.featured-card > a:focus-visible {
+  outline: 2px solid var(--havenly-accent);
+  outline-offset: -3px;
+}
+
+.favorite-symbol:focus-visible {
+  outline: 2px solid var(--havenly-accent);
+  outline-offset: 2px;
 }
 
 .featured-card-body {
