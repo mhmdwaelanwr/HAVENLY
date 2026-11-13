@@ -23,12 +23,7 @@ export default function About() {
       {/* ------------------------------ HERO ------------------------------ */}
       <section className="relative isolate overflow-hidden pt-28 md:pt-32">
         <div className="absolute -left-40 top-20 -z-10 h-[30rem] w-[30rem] rounded-full bg-warm-gold/10 blur-3xl dark:bg-warm-gold/20" />
-        <p
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 bottom-24 -z-10 select-none text-center font-serif text-[22vw] font-bold leading-none tracking-tighter text-warm-gold/[0.06] dark:text-ivory/[0.04]"
-        >
-          HAVENLY
-        </p>
+       
 
         <div className="mx-auto grid max-w-7xl items-center gap-16 px-6 pb-20 sm:px-10 lg:grid-cols-12 lg:gap-10 lg:px-16 lg:pb-28">
           <div className="lg:col-span-6">

@@ -1,8 +1,14 @@
-const Favorites = () => {
+import PropertyCollection from "../../components/PropertyCollection";
+
+const Favorites = ({ properties, actions }) => {
   return (
-    <div>
-      <h1>Favorites</h1>
-    </div>
+    <PropertyCollection
+      title="Favorites"
+      emptyTitle="No favorites yet"
+      emptyMessage="Tap the heart on a property to save it here."
+      properties={properties}
+      actions={actions}
+    />
   );
 };
 
