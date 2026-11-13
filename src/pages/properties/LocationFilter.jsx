@@ -1,8 +1,7 @@
-
 const LocationFilter = ({ value, onChange }) => {
   return (
     <div>
-      <label className="mb-2 block text-xs font-medium text-gray-600">
+      <label className="mb-2 block text-xs font-medium property-muted">
         Location
       </label>
 
@@ -11,7 +10,7 @@ const LocationFilter = ({ value, onChange }) => {
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder="Enter city or area"
-        className="w-full rounded-md border border-gray-200 px-3 py-2.5 text-sm outline-none focus:border-gray-500"
+        className="property-input"
       />
     </div>
   );

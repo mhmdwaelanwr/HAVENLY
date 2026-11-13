@@ -1,14 +1,14 @@
 const BathroomsFilter = ({ value, onChange }) => {
   return (
     <div>
-      <label className="mb-2 block text-xs font-medium text-gray-600">
+      <label className="mb-2 block text-xs font-medium property-muted">
         Bathrooms
       </label>
 
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-md border border-gray-200 bg-white px-3 py-2.5 text-sm"
+        className="property-input"
       >
         <option value="">Any Bathrooms</option>
         <option value="1">1+</option>

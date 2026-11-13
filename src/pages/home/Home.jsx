@@ -1,40 +1,13 @@
 import { useState } from "react";
+import { FiHeart } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import heroHouse from "../../assets/hero-house.svg";
-import villaImage from "../../assets/property-villa.svg";
-import apartmentImage from "../../assets/property-apartment.svg";
-import skylineImage from "../../assets/property-skyline.svg";
+import { properties } from "../../data/properties";
 import "./Home.css";
 
-// Temporary sample listings for the home page until the Properties API is ready.
-const featuredProperties = [
-  {
-    id: 1,
-    name: "Modern Family Villa",
-    location: "Fifth Settlement · New Cairo",
-    price: "8,900,000",
-    details: "4 beds · 3 baths · 320 m²",
-    image: villaImage,
-  },
-  {
-    id: 2,
-    name: "Garden View Apartment",
-    location: "Sheikh Zayed · Giza",
-    price: "5,200,000",
-    details: "3 beds · 2 baths · 180 m²",
-    image: apartmentImage,
-  },
-  {
-    id: 3,
-    name: "Skyline Residence",
-    location: "New Capital · Cairo",
-    price: "7,400,000",
-    details: "3 beds · 3 baths · 240 m²",
-    image: skylineImage,
-  },
-];
+const featuredProperties = properties.filter((property) => property.featured);
 
-function Home() {
+function Home({ actions }) {
   const navigate = useNavigate();
   const [location, setLocation] = useState("");
   const [purpose, setPurpose] = useState("buy");
@@ -130,21 +103,37 @@ function Home() {
           </Link>
         </div>
         <div className="featured-grid">
-          {featuredProperties.map((property) => (
-            <Link to={"/properties/" + property.id} className="featured-card" key={property.id}>
-              <div className="featured-card-image">
-                <img src={property.image} alt={property.name} loading="lazy" />
-                <span className="sale-tag">FOR SALE</span>
-                <span className="favorite-symbol" aria-hidden="true">♡</span>
-              </div>
-              <div className="featured-card-body">
-                <p className="property-location">{property.location}</p>
-                <h3>{property.name}</h3>
-                <p className="property-price">EGP {property.price}</p>
-                <p className="property-details">{property.details}</p>
-              </div>
-            </Link>
-          ))}
+          {featuredProperties.map((property) => {
+            const isFavorite = actions.favoriteIds.includes(property.id);
+
+            return (
+              <article className="featured-card" key={property.id}>
+                <Link to={"/properties/" + property.id}>
+                  <div className="featured-card-image">
+                    <img src={property.image} alt={property.title} loading="lazy" />
+                    <span className="sale-tag">FOR SALE</span>
+                  </div>
+                  <div className="featured-card-body">
+                    <p className="property-location">{property.location}</p>
+                    <h3>{property.title}</h3>
+                    <p className="property-price">EGP {property.price.toLocaleString("en-US")}</p>
+                    <p className="property-details">
+                      {property.bedrooms} beds · {property.bathrooms} baths · {property.area} m²
+                    </p>
+                  </div>
+                </Link>
+                <button
+                  type="button"
+                  className="favorite-symbol"
+                  aria-label={"Favorite " + property.title}
+                  aria-pressed={isFavorite}
+                  onClick={() => actions.onToggleFavorite(property.id)}
+                >
+                  <FiHeart aria-hidden="true" size={19} fill={isFavorite ? "currentColor" : "none"} />
+                </button>
+              </article>
+            );
+          })}
         </div>
       </section>
 

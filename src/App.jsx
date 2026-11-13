@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { findProperty } from "./data/properties";
@@ -29,13 +29,6 @@ const COMPARE_KEY = "havenly.compare";
 const RECENT_KEY = "havenly.recentlyViewed";
 const COMPARE_LIMIT = 3;
 const RECENT_LIMIT = 10;
-
-const propertyLinks = [
-  { to: "/properties", label: "Properties" },
-  { to: "/favorites", label: "Favorites" },
-  { to: "/compare", label: "Compare" },
-  { to: "/recently-viewed", label: "Recently Viewed" },
-];
 
 const App = () => {
   const [favoriteIds, setFavoriteIds] = useState(() => readPropertyIds(FAVORITES_KEY));
@@ -90,17 +83,8 @@ const App = () => {
   return (
     <div>
       <Header />
-      <nav aria-label="Property navigation" className="property-theme property-nav">
-        <div className="mx-auto flex max-w-7xl flex-wrap gap-1 px-4 py-3 sm:gap-3 sm:px-6">
-          {propertyLinks.map(({ to, label }) => (
-            <NavLink key={to} to={to}>
-              {label}
-            </NavLink>
-          ))}
-        </div>
-      </nav>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home actions={actions} />} />
         <Route path="/properties" element={<Properties actions={actions} />} />
         <Route
           path="/properties/:id"
