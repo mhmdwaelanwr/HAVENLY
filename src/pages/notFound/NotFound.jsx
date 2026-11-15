@@ -1,16 +1,12 @@
-// NotFound – 404 page shown for any unmatched route.
-// Full-bleed property photo with a dark overlay and a centered glass card.
-// Uses only the tokens defined in @theme: charcoal, ivory, sand, warm-gold.
+
 import { useState } from "react";
 import { Link } from "react-router";
 import { FiHome, FiArrowRight } from "react-icons/fi";
 
-// Background property photo (swap for a local asset in production)
 const HERO_IMAGE =
   "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1800&q=80";
 
 export default function NotFound() {
-  // Local UI state only: fall back to a solid dark background if the image fails
   const [imageFailed, setImageFailed] = useState(false);
 
   return (
@@ -26,13 +22,12 @@ export default function NotFound() {
         />
       )}
 
-      {/* Dark gradient overlay for text contrast */}
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-gradient-to-b from-charcoal/70 via-charcoal/60 to-charcoal/90"
       />
 
-      {/* Glass card */}
+     
       <section
         aria-labelledby="not-found-title"
         className="relative w-full max-w-2xl rounded-[2rem] border border-sand/30 bg-ivory/10 px-8 py-14 text-center shadow-2xl backdrop-blur-md sm:px-14"
@@ -41,7 +36,7 @@ export default function NotFound() {
           Havenly
         </p>
 
-        {/* Big 404 */}
+        
         <p
           aria-hidden="true"
           className="mt-4 font-serif text-8xl font-bold leading-none text-sand sm:text-9xl"
@@ -64,7 +59,7 @@ export default function NotFound() {
           moved. Let&apos;s take you back to find your next place.
         </p>
 
-        {/* Plain Link styled with theme tokens, so the color is always Havenly gold */}
+        
         <Link
           to="/"
           className="group mt-10 inline-flex items-center gap-3 rounded-full bg-warm-gold px-8 py-4 text-base font-semibold text-ivory shadow-lg shadow-black/30 transition-all duration-300 hover:bg-sand hover:text-charcoal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sand"
