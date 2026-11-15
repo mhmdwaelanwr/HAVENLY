@@ -99,7 +99,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* --------------------------- WHY WE EXIST -------------------------- */}
       <section className="mx-auto max-w-7xl px-6 py-20 sm:px-10 md:py-28 lg:px-16">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-6">
@@ -124,7 +123,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* ---------------------------- THREE PILLARS ------------------------ */}
       <section className="mx-auto max-w-7xl px-6 pb-24 sm:px-10 md:pb-32 lg:px-16">
         <div className="grid gap-6 md:grid-cols-3">
           <article className="group flex flex-col justify-between border border-sand/60 bg-white/70 p-8 transition-colors duration-300 hover:border-warm-gold dark:border-sand/20 dark:bg-ivory/5 dark:hover:border-warm-gold md:min-h-[22rem] md:p-10">
@@ -177,7 +175,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* ----------------------------- OUR STORY --------------------------- */}
+
       <section className="border-t border-sand/40 bg-sand/20 py-24 dark:border-sand/15 dark:bg-dark-surface/60 md:py-32">
         <div className="mx-auto grid max-w-7xl items-center gap-16 px-6 sm:px-10 lg:grid-cols-12 lg:gap-12 lg:px-16">
           <div className="relative lg:col-span-6">
@@ -232,7 +230,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* ---------------------------- OUR VALUES --------------------------- */}
       <section className="mx-auto max-w-7xl px-6 py-24 sm:px-10 md:py-32 lg:px-16">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
@@ -310,7 +307,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* -------------------------- WHY CHOOSE US -------------------------- */}
       <section className="bg-charcoal py-24 text-ivory dark:bg-dark-surface md:py-32">
         <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
           <div className="max-w-2xl">
@@ -379,7 +375,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* ---------------------------- STATISTICS --------------------------- */}
       <section className="mx-auto max-w-7xl px-6 py-24 sm:px-10 md:py-32 lg:px-16">
         <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
@@ -434,7 +429,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* -------------------------------- CTA ------------------------------ */}
       <section className="relative isolate flex min-h-[80vh] items-center justify-center overflow-hidden bg-charcoal px-6 py-24">
         <img
           src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2400&q=80"

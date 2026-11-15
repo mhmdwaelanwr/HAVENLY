@@ -48,14 +48,11 @@ const labelBase =
 export default function Contact() {
   return (
     <main className="bg-ivory dark:bg-charcoal text-charcoal dark:text-ivory font-sans transition-colors duration-300">
-      {/* ───────────── HERO ───────────── */}
       <section className="relative isolate overflow-hidden bg-charcoal">
-        {/* cinematic gradient overlay */}
         <div className="absolute inset-0 -z-10 bg-gradient-to-br from-charcoal via-charcoal to-dark-surface" />
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,color-mix(in_oklab,var(--color-warm-gold)_28%,transparent),transparent_60%)]" />
         <div className="absolute inset-0 -z-10 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent" />
 
-        {/* architectural linework */}
         <div
           aria-hidden="true"
           className="absolute inset-0 -z-10 opacity-[0.07] [background-image:linear-gradient(to_right,var(--color-ivory)_1px,transparent_1px)] [background-size:96px_100%]"
@@ -91,7 +88,6 @@ export default function Contact() {
         <div className="h-px w-full bg-gradient-to-r from-transparent via-sand/30 to-transparent" />
       </section>
 
-      {/* ───────────── MAIN CONTENT ───────────── */}
       <section className="relative">
         <div className="mx-auto max-w-7xl px-6 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-28">
           <div className="grid grid-cols-1 gap-14 lg:grid-cols-12 lg:gap-20">
@@ -261,7 +257,6 @@ export default function Contact() {
                   </ul>
                 </div>
 
-                {/* secondary editorial card */}
                 <Link
                   to="/properties"
                   className="group mt-6 flex items-center justify-between border border-sand/30 bg-transparent px-8 py-6 transition-all duration-300 hover:border-warm-gold hover:bg-warm-gold/5 dark:border-sand/15"
@@ -282,7 +277,6 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* ───────────── CLOSING BANNER ───────────── */}
       <section className="border-t border-sand/30 bg-ivory dark:border-sand/15 dark:bg-dark-surface">
         <div className="mx-auto max-w-7xl px-6 py-14 sm:px-8 sm:py-16 lg:px-12">
           <div className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
