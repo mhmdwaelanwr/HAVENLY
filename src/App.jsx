@@ -21,6 +21,7 @@ import Contact from "./pages/contact/Contact";
 import About from "./pages/about/About";
 import NotFound from "./pages/notFound/NotFound";
 import AdminLayout from './pages/layout/AdminLayout';
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const FAVORITES_KEY = "havenly.favorites";
 const COMPARE_KEY = "havenly.compare";
@@ -94,10 +95,18 @@ const App = () => {
             />
           }
         />
-        <Route path="/properties/:id/contact-agent" element={<ContactAgent />} />
+        <Route
+          path="/properties/:id/contact-agent"
+          element={<ContactAgent />}
+        />
         <Route
           path="/favorites"
-          element={<Favorites properties={favoriteIds.map(findProperty)} actions={actions} />}
+          element={
+            <Favorites
+              properties={favoriteIds.map(findProperty)}
+              actions={actions}
+            />
+          }
         />
         <Route
           path="/compare"
@@ -121,14 +130,15 @@ const App = () => {
             />
           }
         />
-        
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/profile" element={<Profile />} />
+        </Route>{" "}
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFound />} />
-         <Route path="/admin/*" element={<AdminLayout />} />
+        <Route path="/admin/*" element={<AdminLayout />} />
       </Routes>
       <Footer />
     </div>
