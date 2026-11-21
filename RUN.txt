@@ -1,0 +1,20 @@
+HAVENLY - خطوات التشغيل على جهازك
+
+1) فك الضغط عن الملف ده في مجلد على جهازك (مثلا Documents).
+2) افتح Command Prompt: اضغط زر الويندوز واكتب cmd ثم Enter.
+3) اكتب الامر ده ثم Enter:
+   cd %USERPROFILE%\Documents\havenly-app
+4) اكتب:
+   npm install
+   (استنى لحد ما يخلص)
+5) اكتب:
+   npm run dev
+6) افتح المتصفح على الرابط اللي هيظهر:
+   http://localhost:5173/
+
+الصفحات الجديدة:
+   اضافة عقار:      http://localhost:5173/admin/add-property
+   قائمة عقاراتك:   http://localhost:5173/admin/my-listings
+   تعديل عقار:      من زر Edit في صفحة عقاراتك
+
+لايقاف السيرفر: ارجع لنافذة الـ Command Prompt واضغط Ctrl+C
