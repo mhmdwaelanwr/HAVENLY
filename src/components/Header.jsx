@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
 import logo from "../assets/havenly-logo.svg";
 import "./Layout.css";
 
@@ -14,6 +15,8 @@ const navigationLinks = [
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { isAuthenticated, user, logout } = useAuth();
+  const navigate = useNavigate();
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem("havenly-theme") === "dark" ? "dark" : "light";
   });
@@ -25,6 +28,12 @@ function Header() {
 
   function closeMenu() {
     setMenuOpen(false);
+  }
+
+  function handleLogout() {
+    logout();
+    closeMenu();
+    navigate("/login");
   }
 
   function toggleTheme() {
@@ -76,15 +85,42 @@ function Header() {
               type="button"
               className="theme-button"
               onClick={toggleTheme}
-              aria-label={theme === "light" ? "Enable dark mode" : "Enable light mode"}
+              aria-label={
+                theme === "light" ? "Enable dark mode" : "Enable light mode"
+              }
               title={theme === "light" ? "Dark mode" : "Light mode"}
             >
               {theme === "light" ? "☾" : "☀"}
             </button>
-            <Link to="/login" className="sign-in-link" onClick={closeMenu}>
-              Sign in
-            </Link>
-            <Link to="/add-property" className="list-property-button" onClick={closeMenu}>
+
+            {isAuthenticated ? (
+              <>
+                <Link
+                  to="/profile"
+                  className="sign-in-link"
+                  onClick={closeMenu}
+                >
+                  {user.full_name.split(" ")[0]}
+                </Link>
+                <button
+                  type="button"
+                  className="sign-in-link"
+                  onClick={handleLogout}
+                >
+                  Log out
+                </button>
+              </>
+            ) : (
+              <Link to="/login" className="sign-in-link" onClick={closeMenu}>
+                Sign in
+              </Link>
+            )}
+
+            <Link
+              to="/add-property"
+              className="list-property-button"
+              onClick={closeMenu}
+            >
               List a property <span aria-hidden="true">↗</span>
             </Link>
           </div>
