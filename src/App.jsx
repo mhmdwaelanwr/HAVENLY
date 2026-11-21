@@ -22,7 +22,8 @@ import About from "./pages/about/About";
 import NotFound from "./pages/notFound/NotFound";
 import AdminLayout from './pages/layout/AdminLayout';
 import ProtectedRoute from "./components/ProtectedRoute";
-
+import RoleRoute from "./components/RoleRoute";
+import { ROLES } from "./utils/roles";
 const FAVORITES_KEY = "havenly.favorites";
 const COMPARE_KEY = "havenly.compare";
 const RECENT_KEY = "havenly.recentlyViewed";
@@ -138,7 +139,11 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/admin/*" element={<AdminLayout />} />
+        <Route
+          element={<RoleRoute allowedRoles={[ROLES.OWNER, ROLES.ADMIN]} />}
+        >
+          <Route path="/admin/*" element={<AdminLayout />} />
+        </Route>{" "}
       </Routes>
       <Footer />
     </div>
