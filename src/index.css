@@ -14,7 +14,6 @@
   --havenly-accent-contrast: #fffefa;
   --havenly-soft: #e5ddd1;
   --havenly-soft-alt: #e8e2d8;
-  --destructive: #b3261e;
 }
 
 :root[data-theme="dark"] {
@@ -28,7 +27,6 @@
   --havenly-accent-contrast: #1f1f1f;
   --havenly-soft: #36312a;
   --havenly-soft-alt: #413a32;
-  --destructive: #ff897d;
 }
 
 * {
@@ -45,6 +43,9 @@ body {
 button, input, select {
   font: inherit;
 }
+
+:root { --destructive: #b3261e; }
+:root[data-theme="dark"] { --destructive: #ff897d; }
 
 /* Property form */
 .form-page { max-width: 56rem; margin: 0 auto; padding: 1rem 0 4rem; color: var(--havenly-text); }
