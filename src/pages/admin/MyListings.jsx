@@ -56,7 +56,7 @@ export default function MyListings() {
             </div>
 
             <Link
-              to="add-property"
+              to="/admin/add-property"
               className="inline-flex items-center justify-center gap-2 self-start bg-(color:--havenly-accent) px-6 py-3.5 text-xs font-medium uppercase tracking-[0.15em] text-(color:--havenly-accent-contrast) transition-opacity duration-300 hover:opacity-90 md:self-auto"
             >
               <FiPlus className="text-base" />

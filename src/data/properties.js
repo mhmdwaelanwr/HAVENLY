@@ -136,3 +136,84 @@ export function findProperty(id) {
 export function formatPrice(price) {
   return price.toLocaleString("en-US") + " EGP";
 }
+
+// Omar's forms use an additive, browser-local changeset; existing team seed listings stay intact.
+
+const PROPERTY_CHANGES_KEY = "havenly.propertyChanges.v1";
+
+function readPropertyChanges() {
+  if (typeof window === "undefined") return { added: [], edited: {} };
+  try {
+    const saved = JSON.parse(window.localStorage.getItem(PROPERTY_CHANGES_KEY));
+    return {
+      added: Array.isArray(saved?.added) ? saved.added : [],
+      edited: saved?.edited && typeof saved.edited === "object" && !Array.isArray(saved.edited) ? saved.edited : {},
+    };
+  } catch {
+    return { added: [], edited: {} };
+  }
+}
+
+let propertyChanges = readPropertyChanges();
+
+for (const property of properties) {
+  const changes = Object.hasOwn(propertyChanges.edited, String(property.id))
+    ? propertyChanges.edited[String(property.id)]
+    : null;
+  if (changes && typeof changes === "object") Object.assign(property, changes);
+}
+for (const saved of propertyChanges.added) {
+  if (saved && Number.isInteger(saved.id) && !findProperty(saved.id)) {
+    properties.push(saved);
+  }
+}
+
+function persistPropertyChanges(next) {
+  if (typeof window !== "undefined") {
+    try {
+      window.localStorage.setItem(PROPERTY_CHANGES_KEY, JSON.stringify(next));
+    } catch {
+      throw new Error("Not enough browser storage to save this property. Try a smaller image.");
+    }
+  }
+  propertyChanges = next;
+}
+
+export function createProperty(data) {
+  const id = properties.reduce((max, property) => Math.max(max, Number(property.id) || 0), 0) + 1;
+  const created = {
+    ...data,
+    id,
+    images: data.image ? [data.image] : [],
+    amenities: [],
+    agent: { name: "Havenly Sales Team", role: "Property Consultant" },
+  };
+  persistPropertyChanges({
+    ...propertyChanges,
+    added: [...propertyChanges.added, created],
+  });
+  properties.push(created);
+  return created;
+}
+
+export function updateProperty(id, data) {
+  const property = findProperty(id);
+  if (!property) throw new Error("Property not found");
+  const changes = {
+    ...data,
+    images: data.image ? [data.image] : property.images,
+  };
+  const addedIndex = propertyChanges.added.findIndex((entry) => String(entry.id) === String(id));
+  if (addedIndex >= 0) {
+    const added = [...propertyChanges.added];
+    added[addedIndex] = { ...added[addedIndex], ...changes };
+    persistPropertyChanges({ ...propertyChanges, added });
+  } else {
+    persistPropertyChanges({
+      ...propertyChanges,
+      edited: { ...propertyChanges.edited, [String(id)]: changes },
+    });
+  }
+  Object.assign(property, changes);
+  return property;
+}
