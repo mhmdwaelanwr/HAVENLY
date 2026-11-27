@@ -1,0 +1,19 @@
+{
+  "name": "havenly-backend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "node --env-file=.env --watch src/server.js",
+    "start": "node --env-file=.env src/server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "4.22.3",
+    "mongoose": "8.24.11",
+    "cors": "2.8.5"
+  }
+}
