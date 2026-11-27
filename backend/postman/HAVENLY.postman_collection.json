@@ -1,0 +1,33 @@
+{
+  "info": {
+    "name": "HAVENLY Backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health check",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/health"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('API and database ready', () => pm.response.to.have.status(200));",
+              "pm.test('Database connected', () => pm.expect(pm.response.json().database).to.eql('connected'));"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
