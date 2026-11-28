@@ -48,7 +48,7 @@ function HomeSearch() {
         <form className="home-search-form" onSubmit={handleSearch}>
           <label className="search-field">
             <span>LOCATION</span>
-            <div className="search-input-row">
+            <span className="search-input-row">
               <FiMapPin aria-hidden="true" />
               <input
                 type="text"
@@ -60,7 +60,7 @@ function HomeSearch() {
               <datalist id="home-locations">
                 {locations.map((name) => <option key={name} value={name} />)}
               </datalist>
-            </div>
+            </span>
           </label>
           <label className="search-field">
             <span>I'M LOOKING TO</span>

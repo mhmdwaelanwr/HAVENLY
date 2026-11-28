@@ -42,7 +42,7 @@
 
 .hero-eyebrow,
 .section-eyebrow,
-.search-field > span,
+.search-field > span:first-child,
 .lifestyle-copy > span {
   font-size: 11px;
   font-weight: 700;
@@ -118,7 +118,7 @@
 .search-field:first-child { padding-left: 0; }
 .search-field:nth-child(4) { border: 0; }
 
-.search-field > span {
+.search-field > span:first-child {
   display: block;
   margin-bottom: 8px;
   letter-spacing: 1px;
@@ -219,7 +219,7 @@
 
 .featured-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
   gap: 26px;
 }
 
@@ -345,7 +345,6 @@
   .home-search-form { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
   .search-field { padding: 8px 0; border: 0; }
   .home-search-button { grid-column: 1 / -1; }
-  .featured-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .lifestyle-card { grid-template-columns: 1fr; }
   .lifestyle-photo { height: 190px; }
 }
