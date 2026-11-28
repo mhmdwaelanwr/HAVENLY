@@ -148,6 +148,9 @@
   min-width: 0;
   font-size: 14px;
   font-weight: 600;
+}
+
+.search-field select {
   cursor: pointer;
 }
 
@@ -157,8 +160,8 @@
 }
 
 .search-field option {
-  color: #1f1f1f;
-  background: #fffefa;
+  color: var(--havenly-text);
+  background: var(--havenly-paper);
 }
 
 .home-search-button {
@@ -224,7 +227,7 @@
 
 .featured-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: 30px;
 }
 
@@ -286,6 +289,7 @@
   right: 16px;
   width: 44px;
   height: 44px;
+  border: 0;
   cursor: pointer;
   border-radius: 50%;
   display: grid;
@@ -312,8 +316,8 @@
   padding: 18px;
 }
 
-.property-location,
-.property-details {
+.featured-card .property-location,
+.featured-card .property-details {
   margin: 0;
   font-size: 12px;
   color: var(--havenly-muted);
@@ -324,7 +328,7 @@
   font-size: 24px;
 }
 
-.property-price {
+.featured-card .property-price {
   border-top: 1px solid var(--havenly-border);
   margin: 0;
   padding-top: 14px;
@@ -332,7 +336,7 @@
   font-weight: 700;
 }
 
-.property-details {
+.featured-card .property-details {
   margin-top: 9px;
 }
 
@@ -442,24 +446,24 @@
   }
 
   .home-hero {
-    height: 550px;
+    height: 530px;
   }
 
   .home-hero-art {
     width: 100%;
-    opacity: 0.44;
+    opacity: 1;
   }
 
   .home-hero-overlay {
-    background: linear-gradient(90deg, rgb(31 31 31 / 94%), rgb(31 31 31 / 66%));
+    background: rgb(18 18 18 / 62%);
   }
 
   .home-hero-content {
-    padding-top: 88px;
+    padding-top: 84px;
   }
 
   .home-hero h1 {
-    font-size: clamp(40px, 9vw, 58px);
+    font-size: clamp(37px, 12.55vw, 49px);
   }
 
   .hero-description {
@@ -471,18 +475,17 @@
   }
 
   .hero-bottom-caption {
-    margin-top: 55px;
-    line-height: 1.8;
+    display: none;
   }
 
   .home-search-section {
-    margin-top: -42px;
+    margin-top: -53px;
   }
 
   .home-search-form {
-    padding: 20px;
+    padding: 16px;
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 0;
   }
 
   .home-search-button {
@@ -495,7 +498,6 @@
     gap: 16px;
   }
 
-  .featured-grid,
   .benefits-grid,
   .lifestyle-grid {
     grid-template-columns: 1fr;
@@ -517,5 +519,124 @@
 
   .lifestyle-card {
     min-height: 210px;
+  }
+}
+
+.home-mobile-copy,
+.featured-mobile-link {
+  display: none;
+}
+
+.home-search-form {
+  box-shadow: 0 12px 28px rgb(31 31 31 / 6%);
+}
+
+.home-page a:focus-visible,
+.home-page button:focus-visible,
+.home-page input:focus-visible,
+.home-page select:focus-visible {
+  outline: 2px solid var(--havenly-accent);
+  outline-offset: 3px;
+}
+
+.home-hero-art picture {
+  display: block;
+  height: 100%;
+}
+
+.featured-card-image::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 32%;
+  background: linear-gradient(transparent, rgb(38 37 34 / 17%));
+  pointer-events: none;
+}
+
+.sale-tag {
+  z-index: 1;
+}
+
+@media (max-width: 700px) {
+  .home-container {
+    width: calc(100% - 36px);
+  }
+
+  .home-mobile-copy {
+    display: inline;
+  }
+
+  .home-desktop-copy,
+  .featured-desktop-link {
+    display: none;
+  }
+
+  .hero-eyebrow {
+    letter-spacing: 1px;
+    margin-bottom: 34px;
+  }
+
+  .hero-description {
+    max-width: 335px;
+    margin-top: 38px;
+  }
+
+  .search-field {
+    border-bottom: 1px solid var(--havenly-border);
+    padding: 14px 0;
+  }
+
+  .search-field:nth-child(4) {
+    border: 0;
+  }
+
+  .search-field > span {
+    margin-bottom: 7px;
+  }
+
+  .search-field input,
+  .search-field select {
+    min-height: 30px;
+  }
+
+  .home-search-button {
+    margin-top: 14px;
+  }
+
+  .featured-section {
+    padding-block: 55px 46px;
+  }
+
+  .featured-grid {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+    grid-template-columns: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 8px;
+  }
+
+  .featured-card {
+    scroll-snap-align: start;
+  }
+
+  .featured-card-image {
+    aspect-ratio: 354 / 215;
+  }
+
+  .featured-mobile-link {
+    display: inline-block;
+    margin-top: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .featured-card {
+    transition: none;
+  }
+
+  .featured-card:hover {
+    transform: none;
   }
 }

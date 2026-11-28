@@ -52,15 +52,15 @@
 .site-navigation {
   flex: 1;
   justify-content: flex-end;
-  gap: clamp(20px, 5vw, 90px);
+  gap: clamp(20px, 3vw, 48px);
 }
 
 .navigation-links {
-  gap: clamp(16px, 2.2vw, 36px);
+  gap: clamp(12px, 1.5vw, 24px);
 }
 
 .navigation-actions {
-  gap: 22px;
+  gap: 18px;
 }
 
 .navigation-link,
@@ -94,9 +94,14 @@
 }
 
 .theme-button {
-  font-size: 22px;
-  padding: 6px;
-  line-height: 1;
+  font-size: 20px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
 }
 
 .list-property-button {
@@ -118,6 +123,8 @@
   display: none;
   font-size: 25px;
   padding: 8px;
+  min-width: 44px;
+  min-height: 44px;
 }
 
 .site-footer {
@@ -149,7 +156,7 @@
   letter-spacing: 1.6px;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1180px) {
   .site-header-inner {
     min-height: 72px;
     padding: 0 16px;
@@ -160,7 +167,8 @@
   }
 
   .mobile-menu-button {
-    display: block;
+    display: grid;
+    place-items: center;
     margin-left: auto;
   }
 
@@ -171,6 +179,8 @@
     left: 0;
     width: 100%;
     padding: 20px 24px 24px;
+    max-height: calc(100dvh - 73px);
+    overflow-y: auto;
     background: var(--havenly-paper);
     border-bottom: 1px solid var(--havenly-border);
     box-shadow: 0 12px 24px rgb(0 0 0 / 10%);
@@ -193,6 +203,7 @@
   .sign-in-link {
     display: block;
     font-size: 15px;
+    padding-block: 10px;
   }
 
   .navigation-actions {
@@ -201,7 +212,8 @@
   }
 
   .theme-button {
-    text-align: left;
+    justify-content: flex-start;
+    gap: 10px;
     width: fit-content;
   }
 
@@ -212,7 +224,7 @@
 
 @media (max-width: 540px) {
   .site-footer-inner {
-    min-height: 120px;
+    min-height: 100px;
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
@@ -222,5 +234,38 @@
   .site-footer p {
     font-size: 10px;
     line-height: 1.6;
+  }
+}
+
+.mobile-theme-label {
+  display: none;
+  font-size: 15px;
+}
+
+.theme-button:hover,
+.mobile-menu-button:hover {
+  background: var(--havenly-soft);
+}
+
+.site-header a:focus-visible,
+.site-header button:focus-visible,
+.site-footer a:focus-visible {
+  outline: 2px solid var(--havenly-accent);
+  outline-offset: 4px;
+}
+
+@media (max-width: 1180px) {
+  .mobile-theme-label {
+    display: inline;
+  }
+}
+
+@media (max-width: 540px) {
+  .site-footer-inner {
+    width: calc(100% - 36px);
+  }
+
+  .footer-brand {
+    font-size: 20px;
   }
 }

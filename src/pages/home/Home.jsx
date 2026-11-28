@@ -2,10 +2,58 @@ import { useState } from "react";
 import { FiHeart } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import heroHouse from "../../assets/hero-house.svg";
+import mobileArtwork from "../../assets/property-skyline.svg";
+import villaArtwork from "../../assets/property-villa.svg";
+import apartmentArtwork from "../../assets/property-apartment.svg";
 import { properties } from "../../data/properties";
 import "./Home.css";
 
-const featuredProperties = properties.filter((property) => property.featured);
+function FeaturedCard({ property, actions }) {
+  const isFavorite = actions.favoriteIds.includes(property.id);
+  const fallbackImage = property.type === "Apartment" ? apartmentArtwork : villaArtwork;
+
+  function handleImageError(event) {
+    const image = event.currentTarget;
+    if (image.dataset.fallback) return;
+    image.dataset.fallback = "true";
+    image.src = fallbackImage;
+  }
+
+  return (
+    <article className="featured-card">
+      <Link to={`/properties/${property.id}`}>
+        <div className="featured-card-image">
+          <img
+            src={property.image || fallbackImage}
+            alt={property.title}
+            loading="lazy"
+            onError={handleImageError}
+          />
+          <span className="sale-tag">
+            {property.purpose === "rent" ? "FOR RENT" : "FOR SALE"}
+          </span>
+        </div>
+        <div className="featured-card-body">
+          <p className="property-location">{property.location}</p>
+          <h3>{property.title}</h3>
+          <p className="property-price">EGP {property.price.toLocaleString("en-US")}</p>
+          <p className="property-details">
+            {property.bedrooms} beds · {property.bathrooms} baths · {property.area} m²
+          </p>
+        </div>
+      </Link>
+      <button
+        type="button"
+        className="favorite-symbol"
+        aria-label={(isFavorite ? "Remove " : "Save ") + property.title}
+        aria-pressed={isFavorite}
+        onClick={() => actions.onToggleFavorite(property.id)}
+      >
+        <FiHeart aria-hidden="true" size={19} fill={isFavorite ? "currentColor" : "none"} />
+      </button>
+    </article>
+  );
+}
 
 function Home({ actions }) {
   const navigate = useNavigate();
@@ -13,6 +61,8 @@ function Home({ actions }) {
   const [purpose, setPurpose] = useState("buy");
   const [propertyType, setPropertyType] = useState("all");
   const [price, setPrice] = useState("any");
+  const featuredProperties = properties.filter((property) => property.featured).slice(0, 3);
+  const propertyTypes = [...new Set(properties.map((property) => property.type))];
 
   function handleSearch(event) {
     event.preventDefault();
@@ -30,15 +80,21 @@ function Home({ actions }) {
     <main className="home-page">
       <section className="home-hero" aria-labelledby="home-heading">
         <div className="home-hero-art">
-          <img src={heroHouse} alt="Illustration of a modern house" />
+          <picture>
+            <source media="(max-width: 700px)" srcSet={mobileArtwork} />
+            <img src={heroHouse} alt="" fetchPriority="high" />
+          </picture>
         </div>
         <div className="home-hero-overlay" />
         <div className="home-container home-hero-content">
-          <p className="hero-eyebrow">THE ART OF FINDING HOME</p>
-          <h1 id="home-heading">Find a place<br />that feels like yours.</h1>
+          <p className="hero-eyebrow"><span className="home-desktop-copy">THE ART OF FINDING HOME</span><span className="home-mobile-copy">FIND YOUR PLACE</span></p>
+          <h1 id="home-heading">
+            <span className="home-desktop-copy">Find a place<br />that feels like yours.</span>
+            <span className="home-mobile-copy">A place to<br />call your own.</span>
+          </h1>
           <p className="hero-description">
-            Explore thoughtfully selected homes across Egypt.<br />
-            Discover spaces that make every day feel exceptional.
+            <span className="home-desktop-copy">Explore thoughtfully selected homes across Egypt.<br />Discover spaces that make every day feel exceptional.</span>
+            <span className="home-mobile-copy">Find homes that feel right for your life, your family, and your next chapter.</span>
           </p>
           <p className="hero-bottom-caption">
             <span aria-hidden="true" /> A NEW WAY TO DISCOVER YOUR PLACE
@@ -69,8 +125,9 @@ function Home({ actions }) {
               <span>PROPERTY TYPE</span>
               <select value={propertyType} onChange={(event) => setPropertyType(event.target.value)}>
                 <option value="all">All properties</option>
-                <option value="villa">Villa</option>
-                <option value="apartment">Apartment</option>
+                {propertyTypes.map((type) => (
+                  <option key={type} value={type.toLowerCase()}>{type}</option>
+                ))}
               </select>
             </label>
             <label className="search-field">
@@ -98,43 +155,21 @@ function Home({ actions }) {
               Browse homes designed around comfort, location, and a life well lived.
             </p>
           </div>
-          <Link className="section-link" to="/properties">
+          <Link className="section-link featured-desktop-link" to="/properties">
             Explore all properties <span aria-hidden="true">↗</span>
           </Link>
         </div>
         <div className="featured-grid">
-          {featuredProperties.map((property) => {
-            const isFavorite = actions.favoriteIds.includes(property.id);
-
-            return (
-              <article className="featured-card" key={property.id}>
-                <Link to={"/properties/" + property.id}>
-                  <div className="featured-card-image">
-                    <img src={property.image} alt={property.title} loading="lazy" />
-                    <span className="sale-tag">FOR SALE</span>
-                  </div>
-                  <div className="featured-card-body">
-                    <p className="property-location">{property.location}</p>
-                    <h3>{property.title}</h3>
-                    <p className="property-price">EGP {property.price.toLocaleString("en-US")}</p>
-                    <p className="property-details">
-                      {property.bedrooms} beds · {property.bathrooms} baths · {property.area} m²
-                    </p>
-                  </div>
-                </Link>
-                <button
-                  type="button"
-                  className="favorite-symbol"
-                  aria-label={"Favorite " + property.title}
-                  aria-pressed={isFavorite}
-                  onClick={() => actions.onToggleFavorite(property.id)}
-                >
-                  <FiHeart aria-hidden="true" size={19} fill={isFavorite ? "currentColor" : "none"} />
-                </button>
-              </article>
-            );
-          })}
+          {featuredProperties.map((property) => (
+            <FeaturedCard key={property.id} property={property} actions={actions} />
+          ))}
+          {featuredProperties.length === 0 && (
+            <p className="section-description">No featured properties yet. Browse all listings.</p>
+          )}
         </div>
+        <Link className="section-link featured-mobile-link" to="/properties">
+          Explore all properties <span aria-hidden="true">↗</span>
+        </Link>
       </section>
 
       <section className="home-benefits" aria-label="Why choose HAVENLY">
