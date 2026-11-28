@@ -7,11 +7,9 @@ function getTheme() {
     const saved = localStorage.getItem(THEME_KEY);
     if (saved === "light" || saved === "dark") return saved;
   } catch {
-    // Storage may be unavailable in private browsing.
+    // Use the device preference when storage is unavailable.
   }
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
 export default function useTheme() {
@@ -19,15 +17,16 @@ export default function useTheme() {
 
   useLayoutEffect(() => {
     document.documentElement.dataset.theme = theme;
-    try {
-      localStorage.setItem(THEME_KEY, theme);
-    } catch {
-      // The current theme still works without storage.
-    }
   }, [theme]);
 
   function toggleTheme() {
-    setTheme((current) => current === "light" ? "dark" : "light");
+    const next = theme === "light" ? "dark" : "light";
+    setTheme(next);
+    try {
+      localStorage.setItem(THEME_KEY, next);
+    } catch {
+      // The theme still works for this visit.
+    }
   }
 
   return { theme, toggleTheme };

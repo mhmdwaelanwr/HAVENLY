@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { FiMenu, FiMoon, FiSun, FiX } from "react-icons/fi";
+import { FiMenu, FiMoon, FiSun, FiX, FiArrowUpRight } from "react-icons/fi";
 import logo from "../assets/havenly-logo.svg";
 import useTheme from "../hooks/useTheme";
 import "./Layout.css";
@@ -9,9 +9,9 @@ const navigationLinks = [
   { label: "Home", to: "/", end: true },
   { label: "Properties", to: "/properties" },
   { label: "Favorites", to: "/favorites" },
-  { label: "Compare", to: "/compare" },
-  { label: "Recently Viewed", to: "/recently-viewed" },
   { label: "About", to: "/about" },
+  { label: "Compare", to: "/compare", secondary: true },
+  { label: "Recently Viewed", to: "/recently-viewed", secondary: true },
 ];
 
 function Header() {
@@ -79,7 +79,7 @@ function Header() {
                 end={link.end}
                 onClick={closeMenu}
                 className={({ isActive }) =>
-                  "navigation-link" + (isActive ? " active" : "")
+                  "navigation-link" + (link.secondary ? " navigation-secondary" : "") + (isActive ? " active" : "")
                 }
               >
                 {link.label}
@@ -105,7 +105,7 @@ function Header() {
               Sign in
             </Link>
             <Link to="/admin/add-property" className="list-property-button" onClick={closeMenu}>
-              List a property <span aria-hidden="true">↗</span>
+              List a property <FiArrowUpRight aria-hidden="true" />
             </Link>
           </div>
         </nav>
