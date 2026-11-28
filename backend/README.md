@@ -14,8 +14,8 @@ npm run dev
 - Course-aligned versions: Express 5.3.0, Mongoose 9.13.1, dotenv 18.0.10 and Nodemon 3.1.14. HAVENLY retains ES modules and CORS.
 - Do not commit .env or share credentials. Atlas project/cluster and individual database users must be provisioned separately. Use the shared development DB havenly_dev with appropriate permissions and approved IP addresses; no production data.
 - MongoDB creates the database when a collection is first created or data is written. The health endpoint verifies connectivity only.
-- GET http://localhost:5000/api/health returns 200 after a successful database connection. Import postman/HAVENLY.postman_collection.json to test.
-- npm test tests the disconnected health response without Atlas.
+- GET http://localhost:5000/api/health returns 200 only when the database responds to a ping; otherwise 503 (if the server is running). Import postman/HAVENLY.postman_collection.json to test.
+- npm test tests the disconnected health response, 404 and malformed JSON without Atlas.
 - The lockfile is committed; use npm ci for reproducible installation. Its dependency metadata is based on the course reference lockfile and HAVENLY's previous successful install; the updated stack still needs a clean installation and runtime test.
 
 ## Team boundaries (proposed for a real-estate application)
