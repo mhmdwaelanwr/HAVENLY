@@ -15,19 +15,21 @@ GitHub access verified: leader mhmdwaelanwr (admin), ABDoelmasry6677, AhmedElsay
 Do not create competing Property models or CRUD endpoints. Dashboard and property forms use the same endpoints and ownership checks. Confirm exact role split with instructor/team.
 
 ## Start
-From a clean working tree, run git fetch origin then git switch -c backend/YOUR-FEATURE origin/main. If that branch already exists, switch to it instead. Existing frontend dev branches must not be reset or overwritten.
+From a clean working tree, run git fetch origin then git switch backend/YOUR-FEATURE (or create a local tracking branch using git switch --track origin/backend/YOUR-FEATURE). Pull the latest changes before starting. Existing frontend dev branches must not be reset or overwritten.
 
-cd backend; npm install; cp .env.example .env. Use your individual Atlas database credentials when provisioned. Never commit .env. Run npm test. Run npm run dev after Atlas is ready and import the Postman collection for GET /api/health.
+cd backend; npm ci; cp .env.example .env. Use your individual Atlas database credentials when provisioned. Never commit .env. Run npm test. Run npm run dev after Atlas is ready and import the Postman collection for GET /api/health.
 
 Proposed API contracts: /api/auth/register, /api/auth/login, /api/properties, /api/properties/:id, /api/favorites. Property writes require authentication and authorization. Finalize payloads and schemas together before coding. Feature implementation belongs to members.
 
 ## Readiness gates
 - [x] Shared GitHub repo and scaffold on main.
 - [x] Team GitHub write access verified.
-- [ ] Instructor confirms Express major/version, structure and favorites mapping.
+- [x] Express and Mongoose aligned with the same-instructor KEMETRA reference.
+- [ ] Instructor confirms structure and favorites mapping.
 - [ ] Shared Atlas cluster, individual database users and IP access.
 - [ ] Real Atlas health check for each member.
-- [ ] Final dependency lockfile committed.
+- [x] Dependency lockfile committed.
+- [ ] Clean install and local tests on the updated stack.
 - [ ] Instructor confirmation after required gates pass.
 
-CI uses an isolated MongoDB service, not Atlas. A passing CI does not prove Atlas access.
+GitHub Actions has been removed. Run npm test locally and use Postman to verify the real Atlas connection.
