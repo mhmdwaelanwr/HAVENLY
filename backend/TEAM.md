@@ -21,6 +21,10 @@ cd backend; npm ci; cp .env.example .env. Use your individual Atlas database cre
 
 Proposed API contracts: /api/auth/register, /api/auth/login, /api/properties, /api/properties/:id, /api/favorites. Property writes require authentication and authorization. Finalize payloads and schemas together before coding. Feature implementation belongs to members.
 
+Authentication handoff: the unmerged feature/auth frontend branch expects POST /api/auth/register, POST /api/auth/login, GET /api/users/me and PATCH /api/users/me. It currently uses browser-only mock credentials and tokens. Do not merge or deploy it as real authentication until the backend validates roles, hashes passwords, verifies tokens and the frontend uses the real API. Never allow public registration to assign admin roles. Owner and member access rules must be agreed with the team.
+
+Frontend handoff: the dashboard currently uses hard-coded listings and property forms use local storage. Connect both to the same Property API; protect all management operations server-side. The main frontend is a demo until these tasks are done.
+
 ## Readiness gates
 - [x] Shared GitHub repo and scaffold on main.
 - [x] Team GitHub write access verified.

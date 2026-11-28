@@ -84,7 +84,7 @@ function Header() {
             <Link to="/login" className="sign-in-link" onClick={closeMenu}>
               Sign in
             </Link>
-            <Link to="/add-property" className="list-property-button" onClick={closeMenu}>
+            <Link to="/admin/add-property" className="list-property-button" onClick={closeMenu}>
               List a property <span aria-hidden="true">↗</span>
             </Link>
           </div>
