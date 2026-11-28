@@ -15,7 +15,7 @@ GitHub access verified: leader mhmdwaelanwr (admin), ABDoelmasry6677, AhmedElsay
 Do not create competing Property models or CRUD endpoints. Dashboard and property forms use the same endpoints and ownership checks. Confirm exact role split with instructor/team.
 
 ## Start
-From a clean working tree, run git fetch origin then git switch backend/YOUR-FEATURE (or create a local tracking branch using git switch --track origin/backend/YOUR-FEATURE). Pull the latest changes before starting. Existing frontend dev branches must not be reset or overwritten.
+Use the existing personal dev branch assigned to you (dev/abd-hafez-khaled, dev/ahmed-said, dev/ali-mokhtar, dev/mohamed-ahmed, dev/mohamed-anwar or dev/omar-said). From a clean working tree, fetch origin, switch to your own branch, then merge origin/main before starting. Do not reset or force-push any member branch. Existing unmerged work on feature/auth must be preserved until its owner integrates it. Separate backend feature branches are not required.
 
 cd backend; npm ci; cp .env.example .env. Use your individual Atlas database credentials when provisioned. Never commit .env. Run npm test. Run npm run dev after Atlas is ready and import the Postman collection for GET /api/health.
 
